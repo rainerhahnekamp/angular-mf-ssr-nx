@@ -11,7 +11,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/mfe1",
+            "outputPath": "dist/mfe1/browser",
             "index": "apps/mfe1/src/index.html",
             "main": "apps/mfe1/src/main.ts",
             "polyfills": "apps/mfe1/src/polyfills.ts",
@@ -88,6 +88,28 @@
             "jestConfig": "apps/mfe1/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/mfe1/server",
+            "main": "apps/mfe1/src/server.ts",
+            "tsConfig": "apps/mfe1/tsconfig.server.json",
+            "bundleDependencies": false,
+            "optimization": false
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:static-generator",
+          "configurations": {
+            "production": {
+              "browserTarget": "mfe1:build:production"
+            },
+            "development": {
+              "browserTarget": "mfe1:build:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     },
@@ -127,7 +149,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/shell",
+            "outputPath": "dist/shell/browser",
             "index": "apps/shell/src/index.html",
             "main": "apps/shell/src/main.ts",
             "polyfills": "apps/shell/src/polyfills.ts",
@@ -204,6 +226,28 @@
             "jestConfig": "apps/shell/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/shell/server",
+            "main": "apps/shell/src/server.ts",
+            "tsConfig": "apps/shell/tsconfig.server.json",
+            "bundleDependencies": false,
+            "optimization": false
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:static-generator",
+          "configurations": {
+            "production": {
+              "browserTarget": "shell:build:production"
+            },
+            "development": {
+              "browserTarget": "shell:build:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     },
@@ -236,6 +280,7 @@
     }
   },
   "cli": {
+    "analytics": false,
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
