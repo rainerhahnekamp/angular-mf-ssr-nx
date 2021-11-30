@@ -5,7 +5,7 @@ import * as express from 'express';
 import { join } from 'path';
 import { format } from 'url';
 
-const PORT = 4200;
+const PORT = 3000;
 const HOST = `localhost:${PORT}`;
 const DIST = join(__dirname, '../browser');
 
