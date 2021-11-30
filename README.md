@@ -38,7 +38,7 @@ npm run serve:ssr:mfe1
 
 If you navigate to "http://localhost:3000", you will see that the Remote is working.
 
-**"http://localhost:5000" will show an error** in the console. It only works after Angular has been fully loaded.
+**"http://localhost:5000/flights/flights-search" will show an error** in the console. It only works after Angular has been fully loaded.
 
 ## 3. Prerender
 
