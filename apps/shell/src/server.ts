@@ -1,3 +1,5 @@
+import { CustomResourceLoader } from '@nguniversal/common/clover/server/src/custom-resource-loader';
+import { createFetch } from '@angular-architects/module-federation/nguniversal';
 import { Engine } from '@nguniversal/common/clover/server';
 import * as express from 'express';
 import { join } from 'path';
@@ -20,7 +22,17 @@ app.get('*.*', express.static(DIST, {
 //   res.redirect(301, `/en-US${req.originalUrl}`);
 // });
 
+
+// Without mappings, remotes are loaded via HTTP
+const mappings = {
+	// 'http://localhost:4200/': join(__dirname, '../../mfe1/browser/')
+};
+
+// Monkey Patching Angular Universal for Module Federation
+CustomResourceLoader.prototype.fetch = createFetch(mappings);
+
 const ssrEngine = new Engine();
+
 app.get('*', (req, res, next) => {
   ssrEngine.render({
     publicPath: DIST,

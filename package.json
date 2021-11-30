@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
-    "start": "nx serve",
+    "start:shell": "nx serve --project shell",
+    "start:mfe1": "nx serve --project mfe1",
     "build": "nx build",
     "test": "nx test",
     "prerender:shell": "ng run shell:prerender",
@@ -15,10 +16,12 @@
     "build:server:shell": "ng run shell:server",
     "build:server:mfe1": "ng run mfe1:server",
     "serve:ssr:shell": "node dist/shell/server/main.js",
-    "serve:ssr:mfe1": "node dist/mfe1/server/main.js"
+    "serve:ssr:mfe1": "node dist/mfe1/server/main.js",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^12.5.3",
     "@angular/animations": "^12.2.0",
     "@angular/common": "^12.2.0",
     "@angular/compiler": "^12.2.0",
